@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusión para Todos</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f7f9fb;
+            color: #000000;
+        }
+
+        @keyframes slideInLeft {
+            from {transform: translateX(-80px); opacity: 0;}
+            to {transform: translateX(0); opacity: 1;}
+        }
+        @keyframes slideInRight {
+            from {transform: translateX(80px); opacity: 0;}
+            to {transform: translateX(0); opacity: 1;}
+        }
+        @keyframes zoomIn {
+            from {transform: scale(0.7); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        .anim-left { animation: slideInLeft 1s ease; }
+        .anim-right { animation: slideInRight 1s ease; }
+        .anim-zoom { animation: zoomIn 1s ease; }
+
+
+        #inicio {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0906c0, #1d0185);
+            color: white;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        #inicio h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        #inicio p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        #inicio button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #3a6cf4;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #inicio button:hover {
+            background: #dce5ff;
+            transform: scale(1.05);
+        }
+
+        #contenido {
+            display: none;
+            animation: aparecer 1s ease forwards;
+        }
+
+        #inicio {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://dtlatina.com/wp-content/uploads/elementor/thumbs/Imagen-principal-blog-58-qnitiv6y4c555k63qmewoqo34xfddpag3q369f7m2w.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    animation: fadeIn 1s ease;
+    position: relative;
+}
+
+
+        header {
+            background: linear-gradient(135deg,#0906c0, #1d0185);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .menu-superior {
+    position: fixed; /* Fijo en la parte superior */
+    top: 0;
+    width: 100%;
+    background: linear-gradient(135deg,#0906c0, #1d0185);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.menu-superior .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu-superior nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu-superior nav a:hover {
+    color: #ffd700;
+}
+
+
+        section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #2e8bff;
+            padding-left: 10px;
+        }
+
+        .contenedor-imagenes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .imagen {
+            width: 280px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgb(255, 255, 255);
+            margin: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .imagen:hover {
+            transform: scale(1.05);
+        }
+
+        .imagen img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+                /* -------- VIDEOS JUNTOS + ANIMACIÓN FLIP -------- */
+        .videos-contenedor {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .video-card {
+            width: 360px;
+            height: 220px;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .video-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .video-card:hover .video-inner {
+            transform: rotateY(180deg);
+        }
+
+        .video-front,
+        .video-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+
+        .video-front iframe,
+        .video-back iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-back {
+            transform: rotateY(180deg);
+        }
+
+
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+    
+
+        /* -------- ANIMACIONES BASE -------- */
+        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+        @keyframes aparecer { from{opacity:0;} to{opacity:1;} }
+
+        /* -------- FORMULARIO CON ANIMACIÓN -------- */
+form {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px 25px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    animation: formFadeIn 1s ease forwards;
+}
+
+@keyframes formFadeIn {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+form h2 {
+    text-align: center;
+    color: #2e8bff;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #000000;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #2e8bff;
+    box-shadow: 0 0 8px rgba(46,139,255,0.4);
+    outline: none;
+    transform: scale(1.02);
+}
+
+form button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#0906c0, #1d0185);
+    color: #000000;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg,#050183, #2a02b4);
+}
+
+.clouds-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+
+.cloud {
+    background: #aee1f9;   
+    border-radius: 15px;          
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+    text-align: center;         
+    max-width: 250px;          
+    font-size: 0.95rem;            
+    opacity: 0;
+    transform: translateY(0) scale(1);
+    animation: fadeIn 1s forwards, floatPattern 3s ease-in-out infinite; /* Animación opcional de flotación */
+}
+
+.cloud:nth-child(1) { animation-delay: 0s; }
+.cloud:nth-child(2) { animation-delay: 0.3s; }
+.cloud:nth-child(3) { animation-delay: 0.6s; }
+.cloud:nth-child(4) { animation-delay: 0.9s; }
+.cloud:nth-child(5) { animation-delay: 1.2s; }
+
+
+@keyframes floatPattern {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="cuadro-principal">
+
+    <div id="inicio">
+        <h1 class="anim-zoom">"Construyendo Puentes: Inclusión para Todas y Todos"</h1>
+        <p class="anim-left">Construyendo una sociedad más justa, respetuosa y accesible para todos</p>
+        <button class="anim-right" onclick="mostrarContenido()">Entrar</button>
+    </div>
+
+    <!-- -------- CONTENIDO PRINCIPAL -------- -->
+    <div id="contenido">
+
+        <header class="menu-superior">
+    <nav>
+        <a href="#Que es Inclusion">¿Qué es la Inclusión?</a>
+        <a href="#tipos">Tipos de Inclusión</a>
+        <a href="#Importancia">Importancia</a>
+        <a href="#educativa">Inclusión Educativa</a>
+        <a href="#Paginas">Paginas de Apoyo</a>
+    </nav>
+</header>
+
+
+        <header>
+            <h1>Inclusión para Todos</h1>
+            <p>Construyendo una sociedad más justa, respetuosa y accesible</p>
+        </header>
+
+        
+            <section id="Que es Inclusion" class="anim-zoom"></section>
+            <h2 style="text-align: center;">¿Qué es la inclusión?</h2>
+            <p style="text-align: center;">Es un principio y una práctica social que busca garantizar que todas las personas, sin importar sus características, tengan acceso a las mismas oportunidades, derechos y espacios. Significa construir entornos donde la diversidad sea aceptada, valorada y respetada, y donde nadie quede excluido por motivos como discapacidad, origen cultural, género, condición económica, religión, orientación, idioma, forma de aprender, o cualquier otra diferencia.</p>
+            <p style="text-align: center;">La inclusión no se trata solo de “permitir” que alguien participe, sino de crear condiciones reales para que pueda hacerlo con igualdad. Esto implica eliminar barreras físicas, sociales, actitudinales y comunicativas que impiden la participación plena. También busca promover la equidad, es decir, ofrecer a cada persona lo que necesita para desarrollarse, en lugar de dar lo mismo a todos.</p>
+
+             <div class="contenedor-imagenes">
+                <div class="imagen"><img src="https://obbia.cat/wp-content/uploads/2024/05/9058085_4084250-scaled.jpg"></div>
+
+                <div class="imagen"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlqQ_TCwMvQPjoFg1dWCjbG4CRVJFYwCqyww&s"></div>
+
+                <div class="imagen"><img src="https://www.stes.es/wp-content/uploads/2025/01/cabecera_inclusiva-960x500.jpg"></div>
+            </div>
+        </section>
+
+        <br>
+
+        <section id="tipos" class="anim-zoom"></section>
+        <h2 style="text-align: center;">TIPOS DE INCLUSION</h2>
+        <div class="contenedor-imagenes">
+            <div class="imagen">
+                <img src="https://cdn.prod.website-files.com/622a79cdf12413de23677951/63e435efcee3d42c45197725_inclusion%20discapacidad%20horiz.webp">
+                <p><strong>Inclusión social:</strong></p>
+                <p> Busca que todas las personas tengan acceso a la vida comunitaria, servicios y participación ciudadana. Incluye combatir la discriminación, mejorar la convivencia y generar políticas justas</p>
+            </div>
+            <div class="imagen">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxdtTbKiZMSzfB3zEjh6hI9OWdPjZM9EU82w&s">
+                <p><strong>Inclusión digital:</strong></p>
+                <p>Se enfoca en que todas las personas tengan acceso a internet, tecnología, habilidades digitales y herramientas tecnológicas. Muy importante en la era actual.</p>
+            </div>
+            <div class="imagen">
+                <img src="https://www.bbva.com/wp-content/uploads/2025/01/bbva-2004970034-inclusion-laboral-sostenibilidad.jpg">
+                <p><strong>Inclusión laboral:</strong></p>
+                <p>Promueve que todas las personas puedan obtener un empleo digno, con igualdad de oportunidades y ajustes razonables cuando se requieren. Incluye accesibilidad, capacitación y reclutamiento justo.</p>
+            </div>
+            <div class="imagen">
+                <img src="https://institutoraimongaja.com/wp-content/uploads/2023/11/docente-dando-clases-en-un-aula-inclusiva.jpg">
+                <p><strong>Inclusión educativa:</strong></p>
+                <p> Garantiza el derecho de todos los estudiantes a aprender en igualdad de condiciones (este punto se detalla más abajo).</p>
+            </div>
+            <div class="imagen">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQGTra7G_xwDiA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1664228144584?e=2147483647&v=beta&t=jMV_dXyxjHpLopycoBm5tnBpynV8sCKDA9GiSbAC39A">
+                <p><strong>Inclusión cultural:</strong></p>
+                <p>Garantiza que los grupos de distintas culturas y tradiciones tengan espacio para expresarse, ser representados y participar en actividades culturales sin discriminación.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="Importancia" class="anim-zoom"></section>
+    <h2 style="text-align: center;">Importancia de la Inclusión</h2>
+    <p style="text-align: center; max-width:700px; margin:0 auto;">
+        Es fundamental porque permite construir una sociedad donde todas las personas tengan la oportunidad de desarrollarse plenamente, sin importar sus capacidades, características físicas, origen cultural o situación social. Su importancia radica en que elimina barreras que históricamente han impedido la participación de ciertos grupos, promoviendo ambientes más justos y accesibles. Una comunidad inclusiva garantiza que cada individuo reciba el apoyo que necesita para aprender, convivir y crecer, reconociendo que todas las personas tienen talentos y formas distintas de aportar.
+    </p>
+
+    <div class="clouds-container">
+        <div class="cloud">Disminuye la discriminación y los prejuicios sociales.</div>
+        <div class="cloud">Aumenta la participación social y la cohesión comunitaria.</div>
+        <div class="cloud">Mejoran las oportunidades económicas, especialmente para grupos marginados.</div>
+        <div class="cloud">Se fortalece la convivencia porque todas las personas tienen un rol y una voz.</div>
+        <div class="cloud">Se potencia la creatividad colectiva, ya que la diversidad impulsa nuevas ideas y soluciones.</div>
+    </div>
+</section>
+
+            <section class="anim-left">
+            <h2 style="text-align: center;">Proposito de la Inclusion</h2>
+            <p style="text-align: center;">El propósito de la inclusión es transformar la sociedad para que todas las personas, sin importar sus características individuales, puedan participar plenamente y disfrutar de los mismos derechos, oportunidades y beneficios. La inclusión busca crear entornos donde nadie sea excluido por su forma de ser, aprender, pensar, vivir o expresarse, y donde cada persona tenga un lugar, una voz y un papel importante.</p>
+            
+            <p style="text-align: center;">La inclusión pretende eliminar barreras físicas, sociales y actitudinales que impiden la participación y crear entornos accesibles, respetuosos y equitativos. También busca que la diversidad sea vista como una riqueza y no como un problema, promoviendo el respeto, la empatía y la convivencia.</p>
+        </section>
+
+                        <div class="videos-contenedor">
+                <!-- VIDEO 1 -->
+                <div class="video-card">
+                    <div class="video-inner">
+                        <div class="video-front">
+                            <iframe src="https://www.youtube.com/embed/BwZ5SDuknk4" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-back">
+                            <iframe src="https://www.youtube.com/embed/BwZ5SDuknk4" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <!-- VIDEO 2 -->
+                <div class="video-card">
+                    <div class="video-inner">
+                        <div class="video-front">
+                            <iframe src="https://www.youtube.com/embed/Vvba3NZrkCI" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-back">
+                            <iframe src="https://www.youtube.com/embed/Vvba3NZrkCI" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="educativa" class="anim-zoom"></section>>
+             <h2 style="text-align: center;">¿Qué es la inclusión Educativa?</h2>
+            <p style="text-align: center;">La inclusión educativa es un enfoque que busca garantizar que todos los estudiantes, independientemente de sus capacidades, características, origen, cultura o forma de aprender, tengan acceso a una educación de calidad dentro de un mismo entorno escolar. Su propósito principal es asegurar que todas las niñas, niños y jóvenes aprendan juntos, participen activamente y se desarrollen sin sufrir discriminación ni ser separados de sus compañeros. La inclusión educativa considera que cada estudiante es diferente y que esas diferencias deben ser respetadas y valoradas como parte natural de la comunidad escolar.</p>
+
+        <section id="Paginas" class="anim-zoom"></section>
+        <h2 style="text-align: center;">Principios de la educación inclusiva</h2>
+        <div class="contenedor-imagenes">
+            <div class="imagen">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh55Hxz2JXDvfqgOJcSAtReWFBuuP-G2mrkg&s">
+                <p><strong>Acceso : </strong></p>
+                <p style="text-align: center;">Garantizar que todos puedan entrar y permanecer en la escuela (rampas, transporte, inscripción sin discriminación).</p>
+            </div>
+
+            <div class="imagen">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/los-estudiantes-reciben-educacion-sentados-en-los-escritorios-de-la-universidad-y-levantando-las-manos-illustration-svg-download-png-11579877.png">
+                <p><strong>Participación :</strong></p>
+                <p>Que todos los estudiantes participen en actividades escolares, proyectos, deportes y dinámicas grupales.</p>
+            </div>
+
+            <div class="imagen">
+                <img src="https://thumbs.dreamstime.com/b/estudiantes-de-anime-trabajando-juntos-dos-compa%C3%B1eros-clase-comparten-un-escritorio-con-libros-uno-dedicado-explicar-el-otro-398581130.jpg">
+                <p><strong>Permanencia:</strong></p>
+                <p>Evitar la deserción escolar generando bienestar, apoyo emocional y condiciones adecuadas.</p>
+            </div>
+
+            <div class="imagen">
+                <img src="https://dokidokijapan.com/wp-content/uploads/2025/05/Anime-aulacom.png">
+                <p><strong>prendizaje significativo:</strong></p>
+                <p> Garantiza el derecho de todos los estudiantes a aprender en igualdad de condiciones (este punto se detalla más abajo).</p>
+            </div>
+        </div>
+    </section>
+
+                <!-- -------- VIDEOS JUNTOS + FLIP -------- -->
+            <div class="videos-contenedor">
+
+                <!-- VIDEO 1 -->
+                <div class="video-card">
+                    <div class="video-inner">
+                        <div class="video-front">
+                            <iframe src="https://www.youtube.com/embed/4INwx_tmTKw" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-back">
+                            <iframe src="https://www.youtube.com/embed/4INwx_tmTKw" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIDEO 2 -->
+                <div class="video-card">
+                    <div class="video-inner">
+                        <div class="video-front">
+                            <iframe src="https://www.youtube.com/embed/vUEzg5FlMqY" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-back">
+                            <iframe src="https://www.youtube.com/embed/vUEzg5FlMqY" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <h3 style="text-align:center; margin-top:40px;">Páginas de Apoyo sobre la Inclusión Educativa</h3>
+        <div class="contenedor-imagenes">
+            <div class="imagen">
+                <a href="https://www.unesco.org/es/education/inclusion" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Flag_of_UNESCO.svg/900px-Flag_of_UNESCO.svg.png" alt="UNESCO">
+                </a>
+                <p><strong>UNESCO:</strong> Educación inclusiva como base del desarrollo sostenible.</p>
+            </div>
+
+            <div class="imagen">
+                <a href="https://www.unicef.org/education/inclusive-education" target="_blank">
+                    <img src="https://media.licdn.com/dms/image/v2/C4D0BAQHLb1b73MYKpA/company-logo_200_200/company-logo_200_200/0/1630575543177/unicefmexico_logo?e=2147483647&v=beta&t=C7Kti0IEJ-ZurFKZu264kwDNV--HhAbq7WNI0aPOVS8" alt="UNICEF">
+                </a>
+                <p><strong>UNICEF:</strong> Apoyo global a la educación sin exclusión.</p>
+            </div>
+
+            <div class="imagen">
+                <a href="https://www.sep.gob.mx/es/sep1/Educacion_Inclusiva" target="_blank">
+                    <img src="https://www.gob.mx/cms/uploads/action_program/main_image/3181/post_logo_educ.jpg" alt="SEP">
+                </a>
+                <p><strong>SEP:</strong> Políticas nacionales de educación inclusiva.</p>
+            </div>
+        </div>
+
+
+    <form action="#" method="post">
+    <h2>Formulario sobre el PAEC</h2>
+    <!-- DATOS DEL ESTUDIANTE -->
+    <label for="nombre">Nombre del estudiante:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+    <label for="grado">Grado y grupo:</label>
+    <input type="text" id="grado" name="grado" placeholder="Ejemplo: 5° BV" required>
+    <label for="Edad">Edad</label>
+    <input type="text" id="edad" name="edad" placeholder="Escribe tu edad" required>
+    <label for="Correo">Correo Electronico:</label>
+    <input type="text" id="Correo" name="Correo" placeholder="Escribe tu Correo" required>
+
+    <!-- EXPERIENCIA -->
+    <label for="experiencia">¿Cómo describirías tu experiencia aprendiendo sobre el PAEC?</label>
+    <select id="experiencia" name="experiencia" required>
+        <option value="">Selecciona una opción</option>
+        <option value="muy_buena">Muy buena</option>
+        <option value="buena">Buena</option>
+        <option value="regular">Regular</option>
+        <option value="mala">Mala</option>
+    </select>
+
+    <label for="aprendizaje">¿Qué aprendiste sobre la inclusión y el PAEC?</label>
+    <textarea id="aprendizaje" name="aprendizaje" rows="4" placeholder="Escribe lo más importante que comprendiste" required></textarea>
+    <label for="importante">¿Por qué crees que la inclusión educativa es importante?</label>
+    <textarea id="importante" name="importante" rows="4" placeholder="Escribe tu opinión" required></textarea>
+    <label for="sugerencias">¿Qué sugerencias tienes para mejorar la educación inclusiva?</label>
+    <textarea id="sugerencias" name="sugerencias" rows="4" placeholder="Tus ideas o recomendaciones"></textarea>
+
+
+    <button type="submit">Enviar formulario</button>
+
+</form>
+        <footer>
+            <p>© Inclusión para Todos | Programación 5to Bv | Villegas </p>
+        </footer>
+
+    </div>
+
+    <script>
+        function mostrarContenido() {
+            document.getElementById("inicio").style.display = "none";
+            document.getElementById("contenido").style.display = "block";
+        }
+    </script>
+
+
+</div>
+</body>
+</html>
